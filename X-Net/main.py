@@ -1,11 +1,12 @@
 import argparse
 import os
-import tensorflow as tf
 from Model_lib import pix2pix_generator
 from train import pix2pix
 from glob import glob
 from utils import *
 import tensorflow as tf
+
+
 from logger import setup_logger
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--dataset_name', dest='dataset_name', default='dataset/training-example-data', help='name of the dataset')###########1
@@ -17,19 +18,20 @@ parser.add_argument('--input_nc', dest='input_nc', type=int, default=3, help='of
 parser.add_argument('--output_nc', dest='output_nc', type=int, default=3, help='of output image channels')
 parser.add_argument('--lr', dest='lr', type=float, default=0.0002, help='initial learning rate for adam')
 parser.add_argument('--beta1', dest='beta1', type=float, default=0.5, help='momentum term of adam')
-parser.add_argument('--phase', dest='phase', default='test', help='train, test')
-parser.add_argument('--checkpoint_dir', dest='checkpoint_dir', default='./X-Net-weights', help='models are saved here')##################3
-parser.add_argument('--sample_dir', dest='sample_dir', default='./experiment_model/base_val_finetune/', help='sample are saved here')##############4 训练图片保存路径
-parser.add_argument('--fine_checkpoint_dir', dest='checkpoint_dir', default='./experiment_xl_sparse/fine_checkpoint/', help='models are saved here')
-parser.add_argument('--sample_dir', dest='sample_dir', default='./experiment_xl_sparse/base_val_finetune/', help='sample are saved here')
+parser.add_argument('--phase', dest='phase', default='train', help='train, test')
+parser.add_argument('--checkpoint_dir', dest='checkpoint_dir', default='./X-Net-weights/', help='models are saved here')##################3
+parser.add_argument('--fine_checkpoint_dir', dest='checkpoint_dir', default='./experiment_model/fine_checkpoint/', help='models are saved here')
+parser.add_argument('--best_checkpoint_dir', dest='best_checkpoint_dir', default='./experiment_model/check_best_new/', help='best models are saved here')
+parser.add_argument('--sample_dir', dest='sample_dir', default='./experiment_model/base_val/', help='sample are saved here')##############4 训练图片保存路径
 parser.add_argument('--abf_dir', dest='abf_dir', default='./base_super/sample_1129/', help='sample are saved here')
-parser.add_argument('--test_dir', dest='test_dir', default='./experiment_xl_sparse/test_0219/', help='test sample are saved here')
+parser.add_argument('--test_dir', dest='test_dir', default='./experiment_model/test_0219/', help='test sample are saved here')
 parser.add_argument('--L1_lambda', dest='L1_lambda', type=float, default=1000, help='weight on L1 term in objective')
 parser.add_argument('--withbn', dest='withbn', type=bool, default=True, help='model with or without fusion')
 parser.add_argument('--same_input_size', dest='same_input_size', type=bool, default=True, help='mode input with same or different size')
 parser.add_argument('--Model', dest='Model', default='my', help='which mode to choose, my or other')
-parser.add_argument('--log_dir', default='experiment_xl_sparse/runs/logs_xl_sparse/',help='Directory for saving checkpoint models')
+parser.add_argument('--log_dir', default='experiment_model/runs/logs_xl_sparse/',help='Directory for saving checkpoint models')
 args = parser.parse_args()
+
 
 
 def main(_):
@@ -83,7 +85,8 @@ def main(_):
         base_count = 94312
         for epoch in range(args.epoch):
             # data = glob('./datasets/{}/train_wild/*.tif'.format(args.dataset_name))
-            data = glob('{}/example-data-training samples/*'.format(args.dataset_name))
+            # data = glob('{}/example-data-training samples/*'.format(args.dataset_name))
+            data = glob('./{}/*'.format(args.dataset_name))
             # data = glob('/home/ksc/anet-models/different_bits/{}/*'.format(args.dataset_name))
             # data = glob('/media/ksc/code/tubulin-model-data/tubulin-model-3/finetune-samples/*')
             # np.random.shuffle(data)
@@ -109,7 +112,7 @@ def main(_):
                     select_prob = 2
                     if select_prob == 1:
                         new_n = random.randint(1, num_de)
-                        image_path_val = image_path + '/sparse/1-' + str(new_n) + '.tif'
+                        image_path_val = image_path + '/U-SRM/1-' + str(new_n) + '.tif'
                         img_B = imread(image_path_val)
                         if img_B.ndim == 2:
                             img_BB = np.zeros((img_B.shape[0], img_B.shape[1], 3))
@@ -118,7 +121,7 @@ def main(_):
                         img_B[:,:,1] = img_B[:,:,0]
                         img_B[:,:,2] = img_B[:,:,0]
                     else:
-                        image_path_val = image_path + '/sparse-generated/1sparse-generated.tif'
+                        image_path_val = image_path + '/MU-SRM/MU-SRM.tif'
                         img_B = imread(image_path_val)
 
                     # img_B = img_A
@@ -126,7 +129,7 @@ def main(_):
                     # img_A = img_B
 
                     new_n = random.randint(1, num_de)
-                    image_path_gt = image_path + '/dense/1-' + str(new_n) + '.tif'
+                    image_path_gt = image_path + '/W-SRM/1-' + str(new_n) + '.tif'
                     img_gt = imread(image_path_gt)
                     if img_gt.ndim == 2:
                         img_BB = np.zeros((img_gt.shape[0], img_gt.shape[1], 3))
@@ -134,7 +137,7 @@ def main(_):
                         img_gt = img_BB
                     for rani in range(2):
                         new_n = random.randint(1, num_de)
-                        image_path_gt = image_path + '/dense/1-' + str(new_n) + '.tif'
+                        image_path_gt = image_path + '/W-SRM/1-' + str(new_n) + '.tif'
                         img_gt1 = imread(image_path_gt)
                         if img_gt1.ndim == 2:
                             img_BB = np.zeros((img_gt1.shape[0], img_gt1.shape[1], 3))

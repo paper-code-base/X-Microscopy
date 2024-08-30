@@ -1,3 +1,4 @@
+
 from logger import setup_logger
 from utils import *
 from glob import glob
@@ -27,12 +28,12 @@ for sample_file in sample_files:
         if 'F-SRM.tif' in fl and 'post/' not in fl:
             print(fl)
             image1 = scipy.misc.imread(fl)
-            compare_files = sorted(glob(fl.replace(fl.split('/')[-1],'')+'/wf+MU-SRM-to-SRM-desired_output/*'))
+            compare_files = sorted(glob(fl.replace(fl.split('/')[-1],'')+'/XM3/*'))
             logger = setup_logger("evaluate{}".format(count), fl.replace(fl.split('/')[-1],''), filename=ssim_txt_path)
             count += 1
             for cfl in compare_files:
                 # if not ('wf.tif' in cfl or 'log_scores.txt' in cfl):
-                if not '.txt' in cfl and 'XN' in cfl:
+                if not '.txt' in cfl and 'XM' in cfl:
                     image2 = scipy.misc.imread(cfl)
 
                     image1 = image1.astype(np.float32)

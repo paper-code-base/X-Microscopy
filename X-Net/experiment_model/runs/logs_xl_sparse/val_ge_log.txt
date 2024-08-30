@@ -1,0 +1,77 @@
+epoch:2
+the eval of image :train_0002_13__None
+the gt compare with w1 :
+mse  : 72.94273743680606   ,  nrmse : 0.6610187662424373
+psnr : 29.50098303132386   ,  ssim  : 0.9111705446315806
+the gt compare with w2 :
+mse  : 32.52972402182947   ,  nrmse : 0.531040338764047
+psnr : 33.00799982071301   ,  ssim  : 0.9312416200876316
+the gt compare with fusion :
+mse  : 30.760458935603406   ,  nrmse : 0.5189564209412956
+psnr : 33.250875501639634   ,  ssim  : 0.9257896824594729
+epoch:5
+the eval of image :train_0005_4__None
+the gt compare with w1 :
+mse  : 48.201564653039725   ,  nrmse : 0.6229148628667126
+psnr : 31.300192249288056   ,  ssim  : 0.9189137690399524
+the gt compare with w2 :
+mse  : 28.953809927869838   ,  nrmse : 0.5685732009135697
+psnr : 33.51374641792984   ,  ssim  : 0.9333652325981417
+the gt compare with fusion :
+mse  : 30.63694408969431   ,  nrmse : 0.6179309380312533
+psnr : 33.26834916851548   ,  ssim  : 0.9003280341355944
+epoch:7
+the eval of image :train_0007_18__None
+the gt compare with w1 :
+mse  : 45.732086337639956   ,  nrmse : 0.7505014742415901
+psnr : 31.528593461424673   ,  ssim  : 0.9068289581362334
+the gt compare with w2 :
+mse  : 23.094987392393154   ,  nrmse : 0.6397597518689873
+psnr : 34.49562631367639   ,  ssim  : 0.8690463811150186
+the gt compare with fusion :
+mse  : 23.417193999723366   ,  nrmse : 0.5726333732221348
+psnr : 34.435455069994376   ,  ssim  : 0.9501143099617995
+epoch:10
+the eval of image :train_0010_9__None
+the gt compare with w1 :
+mse  : 68.08809592359843   ,  nrmse : 0.6928575127197439
+psnr : 29.800091715190096   ,  ssim  : 0.9043853460728353
+the gt compare with w2 :
+mse  : 28.855367476556246   ,  nrmse : 0.5630108466090947
+psnr : 33.52853751395837   ,  ssim  : 0.8503884155185011
+the gt compare with fusion :
+mse  : 42.001343780791565   ,  nrmse : 0.5749033694583523
+psnr : 31.898171755355612   ,  ssim  : 0.9015510458930959
+epoch:13
+the eval of image :train_0013_0__None
+the gt compare with w1 :
+mse  : 34.38637597639204   ,  nrmse : 0.5471678989444106
+psnr : 32.766939534782786   ,  ssim  : 0.9179226251636786
+the gt compare with w2 :
+mse  : 26.078608523160014   ,  nrmse : 0.5674144466440568
+psnr : 33.967959458492516   ,  ssim  : 0.9329385609272839
+the gt compare with fusion :
+mse  : 24.998918106265045   ,  nrmse : 0.50850883705234
+psnr : 34.1515914702172   ,  ssim  : 0.956654951083383
+epoch:15
+the eval of image :train_0015_14__None
+the gt compare with w1 :
+mse  : 38.502481765727296   ,  nrmse : 0.7090851302270124
+psnr : 32.275916370107495   ,  ssim  : 0.9195332472876855
+the gt compare with w2 :
+mse  : 25.98242346143497   ,  nrmse : 0.4852754978047322
+psnr : 33.98400704244758   ,  ssim  : 0.9577137445936522
+the gt compare with fusion :
+mse  : 26.470675594230656   ,  nrmse : 0.4729452876929094
+psnr : 33.903153352030515   ,  ssim  : 0.9508087375848716
+epoch:2
+the eval of image :train_0002_13__None
+the gt compare with w1 :
+mse  : 25.982792466637694   ,  nrmse : 0.5313984183325046
+psnr : 33.98394536391109   ,  ssim  : 0.9581965709086514
+the gt compare with w2 :
+mse  : 23.28899607975088   ,  nrmse : 0.5051911487261858
+psnr : 34.45929593089846   ,  ssim  : 0.9608921969853726
+the gt compare with fusion :
+mse  : 22.003329489012284   ,  nrmse : 0.48858622131240836
+psnr : 34.705919587139256   ,  ssim  : 0.9610156311324215

@@ -143,6 +143,7 @@ class pix2pix(object):
             # data = glob('/media/ksc/code/tubulin-model-data/{}/model-3-training-samples/*'.format(self.dataset_name))
             # data = glob('/media/ksc/code/2022.06.16--test-superresolution/{}/finetune-samples/*'.format(self.dataset_name))
             data = glob('./{}/*'.format(self.dataset_name))
+            # data = glob('/media/ksc/data/X-Microscopy/X-Microscopy/UR-Net-8/dataset/training-example-data/*'.format(args.dataset_name))
             # np.random.shuffle(data)
             batch_idxs = min(len(data), args.train_size) // self.batch_size
 
@@ -239,8 +240,8 @@ class pix2pix(object):
     def sample(self, sample_dir,abf_dir,epoch,idx):
         # data = np.random.choice(glob('./datasets/{}/val/*.tif'.format(self.dataset_name)), self.batch_size)
         # data = np.random.choice(glob('/media/ksc/code/tubulin-model-data/{}/model-3-training-samples/*'.format(self.dataset_name)),self.batch_size)
-        # data = np.random.choice(glob('/media/ksc/code/2022.06.16--test-superresolution/{}/finetune-samples/*'.format(self.dataset_name)),self.batch_size)
         data = np.random.choice(glob('./{}/*'.format(self.dataset_name)),self.batch_size)
+        # data = np.random.choice(glob('/media/ksc/data/X-Microscopy/X-Microscopy/UR-Net-8/dataset/training-example-data/*'.format(self.dataset_name)),self.batch_size)
         for sample_file in data:
             print(sample_file)
             sample = load_val_image_ksc(sample_file)
@@ -418,7 +419,9 @@ class pix2pix(object):
         from PIL import ImageEnhance
         # sample_files = glob('./datasets/{}/test_train/wild/*.tif'.format(self.dataset_name))
         # sample_files = glob('/media/ksc/code/2022.06.16--test-superresolution/{}/2022.11.09-test/*'.format(self.dataset_name))
-        sample_files = glob('./{}/*'.format(self.test_dataset_name))
+        # sample_files = glob('./{}/*'.format(self.test_dataset_name))
+        sample_files = glob('./{}/*'.format(args.test_dataset_name))
+        #sample_files = glob('/media/ksc/data/X-Microscopy/X-Microscopy/UR-Net-8/dataset/test-example-data/*'.format(self.dataset_name))
         # sample_files = glob('/media/ksc/code/2022.06.16--test-superresolution/{}/finetune-samples/*'.format(self.dataset_name))
         # sample_files = glob('/media/ksc/code/tubulin-model-data/{}/model-3-training-samples/*'.format(self.dataset_name))
         # sample_files = glob('/media/ksc/code/control_background_remove')

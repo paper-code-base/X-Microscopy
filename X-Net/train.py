@@ -244,7 +244,8 @@ class pix2pix(object):
             #     if epoch == 10:
             #         break
             # data = glob('./datasets/{}/train_wild/*.tif'.format(self.dataset_name))
-            data = glob('{}/example-data-training samples/*'.format(self.dataset_name))
+            # data = glob('{}/example-data-training samples/*'.format(self.dataset_name))
+            data = glob('./{}/*'.format(self.dataset_name))
             # data = glob('/home/ksc/anet-models/different_bits/{}/*'.format(args.dataset_name))
             # print(data)
             np.random.shuffle(data)
@@ -434,12 +435,13 @@ class pix2pix(object):
         #     sample_file = sample_file.replace('val_wild', 'val_gt')
         #     sample_gt = load_val_image(sample_file)
         #     img_name = txt_wrap_by('/', '.', sample_file)
-        data = np.random.choice(
-            glob('{}/example-data-training samples/*'.format(self.dataset_name)),
-            self.batch_size)
+        # data = np.random.choice( glob('{}/example-data-training samples/*'.format(self.dataset_name)),
+        # data=np.random.choice(glob('/media/ksc/data/X-Microscopy/STAR-PROTOCOL/example-data-tubulin-model-WF+MU-SRM-to-SRM/training-example-data/*'.format(self.dataset_name)), self.batch_size)
         # data = np.random.choice(
         #     glob('/home/ksc/anet-models/different_bits/{}/*'.format(self.dataset_name)),
-        #     self.batch_size)
+        #
+        # data = np.random.choice(glob('{}/example-data-training samples/*'.format(self.dataset_name)),self.batch_size)
+        data = np.random.choice(glob('./{}/*'.format(self.dataset_name)), self.batch_size)
         for sample_file in data:
             print(sample_file)
             sample = load_wf_image_ksc(sample_file,reg=True)
@@ -517,11 +519,13 @@ class pix2pix(object):
             sess.close()
 
     def test_end(self, args):
-        sample_files = sorted(glob('/media/ksc/code/example-data-2022.12.12/tubulin-models/example-data-tubulin-model-WF+MU-SRM-to-SRM/{}/*'.format(self.dataset_name)))
+        # sample_files = sorted(glob('/media/ksc/code/example-data-2022.12.12/tubulin-models/example-data-tubulin-model-WF+MU-SRM-to-SRM/{}/*'.format(self.dataset_name)))
         # sample_files = glob('/media/ksc/data/below-100-100/*')
         # sample_files = glob('/home/ksc/anet-models/different_bits')
         # sample_files = glob(
         #     '/media/ksc/code/tubulin-model-data/{}/model-2-training-samples/*'.format(self.dataset_name))
+        sample_files = glob('./{}/*'.format(args.test_dataset_name))
+        #sample_files = glob('/media/ksc/data/X-Microscopy/X-Microscopy/X-Net/dataset/test-example-data/*'.format(self.dataset_name))
         count = 0
         print(sample_files)
         for sample_file in sample_files:
@@ -610,15 +614,15 @@ class pix2pix(object):
 
                                 # folder = 'wf+sparse-to-SRM-desired_output/'
                                 # folder = 'sparse+sparse-to-SRM-desired_output/'
-                                folder = 'wf+MU-SRM-to-SRM-desired_output/'
+                                folder = 'XM3/'
                                 # folder = ''
 
                                 if not os.path.exists(fl.replace(fl.split('/')[-1], '') + folder):
                                     os.makedirs(fl.replace(fl.split('/')[-1], '') + folder)
 
-                                img_name_ak1 = fl.replace(fl.split('/')[-1],'') + folder + 'XN1'.format(fl.split('/')[-1])
-                                img_name_ak2 = fl.replace(fl.split('/')[-1],'') + folder + 'XN2'.format(fl.split('/')[-1])
-                                img_name_ak3 = fl.replace(fl.split('/')[-1], '') + folder + 'XN3'.format(
+                                img_name_ak1 = fl.replace(fl.split('/')[-1],'') + folder + 'XM1'.format(fl.split('/')[-1])
+                                img_name_ak2 = fl.replace(fl.split('/')[-1],'') + folder + 'XM2'.format(fl.split('/')[-1])
+                                img_name_ak3 = fl.replace(fl.split('/')[-1], '') + folder + 'XM3'.format(
                                     fl.split('/')[-1])
                                 save_images_val(image_a,
                                     '{}.tif'.format(img_name_ak1))

@@ -1,0 +1,50 @@
+epoch:2
+the eval of image :train_0002_3__None
+the gt compare with w1 :
+mse  : 3806.9110090957233   ,  nrmse : 1.0040144495922025
+psnr : 12.325076360657278   ,  ssim  : 0.567712163566635
+epoch:4
+the eval of image :train_0004_7__None
+the gt compare with w1 :
+mse  : 1490.8416697816403   ,  nrmse : 0.9994340111080143
+psnr : 16.39648837865182   ,  ssim  : 0.697979452943593
+epoch:6
+the eval of image :train_0006_11__None
+the gt compare with w1 :
+mse  : 3121.7811303589706   ,  nrmse : 0.9977517579387477
+psnr : 13.186779096781596   ,  ssim  : 0.4350478955793406
+epoch:8
+the eval of image :train_0008_15__None
+the gt compare with w1 :
+mse  : 577.818154237939   ,  nrmse : 1.0257986807997612
+psnr : 20.512891782204072   ,  ssim  : 0.6370653328007737
+epoch:10
+the eval of image :train_0010_19__None
+the gt compare with w1 :
+mse  : 1469.9138397246804   ,  nrmse : 1.0793438802034554
+psnr : 16.457884819216257   ,  ssim  : 0.1318503434150193
+epoch:13
+the eval of image :train_0013_0__None
+the gt compare with w1 :
+mse  : 1625.3044595792321   ,  nrmse : 0.9449639869633126
+psnr : 16.02145633873055   ,  ssim  : 0.1026121862035047
+epoch:15
+the eval of image :train_0015_4__None
+the gt compare with w1 :
+mse  : 306.9056243591819   ,  nrmse : 1.9194397778664674
+psnr : 23.26075513472989   ,  ssim  : 0.651880439397945
+epoch:2
+the eval of image :train_0002_3__None
+the gt compare with w1 :
+mse  : 243.62804006706898   ,  nrmse : 1.0828026477920212
+psnr : 24.263530894457105   ,  ssim  : 0.7622666014160849
+epoch:4
+the eval of image :train_0004_7__None
+the gt compare with w1 :
+mse  : 134.74491904032837   ,  nrmse : 0.670420922804062
+psnr : 26.83567963071112   ,  ssim  : 0.8343647672973011
+epoch:0
+the eval of image :train_0000_9__None
+the gt compare with w1 :
+mse  : 293.0652922051618   ,  nrmse : 0.8077695627915338
+psnr : 23.461159729866754   ,  ssim  : 0.6859992012487636

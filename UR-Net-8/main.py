@@ -21,8 +21,8 @@ parser.add_argument('--lr', dest='lr', type=float, default=0.0002, help='initial
 parser.add_argument('--beta1', dest='beta1', type=float, default=0.5, help='momentum term of adam')
 parser.add_argument('--phase', dest='phase', default='train', help='train, test')
 parser.add_argument('--scale', dest='scale', default=1.0, help='1.0 for most models, 3.0 or laminB1')
-parser.add_argument('--checkpoint_dir', dest='checkpoint_dir', default='./UR-Net-8-weights', help='models are saved here')##################3
-parser.add_argument('--sample_dir', dest='sample_dir', default='./experiment_model/base_val_finetune/', help='sample are saved here')##############4 训练图片保存路径
+parser.add_argument('--checkpoint_dir', dest='checkpoint_dir', default='./UR-Net-8-weights/', help='models are saved here')##################3
+parser.add_argument('--sample_dir', dest='sample_dir', default='./experiment_model/base_val/', help='sample are saved here')##############4 训练图片保存路径
 parser.add_argument('--abf_dir', dest='abf_dir', default='datasets', help='sample are saved here')
 parser.add_argument('--test_dir', dest='test_dir', default='./experiment_model/datasets/test_train/save/', help='test sample are saved here')
 parser.add_argument('--L1_lambda', dest='L1_lambda', type=float, default=5000, help='weight on L1 term in objective')
@@ -31,7 +31,6 @@ parser.add_argument('--same_input_size', dest='same_input_size', type=bool, defa
 parser.add_argument('--Model', dest='Model', default='my', help='which mode to choose, only my is supported now')
 parser.add_argument('--log_dir', default='experiment_model/runs/logs_generated/',help='Directory for saving checkpoint models')
 args = parser.parse_args()
-
 
 def main(_):
     if not os.path.exists(args.checkpoint_dir):
@@ -47,7 +46,7 @@ def main(_):
     logger_val = setup_logger("test_40wild_val", args.log_dir, filename='{}_log.txt'.format(
         'test_wild_experiment_1'))
     # os.environ['CUDA_DEVICE_ORDE'] = "PCI_BUS_ID"
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     if args.same_input_size:
         base_count = 0
         tf.reset_default_graph()
@@ -75,6 +74,7 @@ def main(_):
             # data = glob('/media/ksc/code/tubulin-model-data/{}/model-3-training-samples/*'.format(args.dataset_name))
             # data = glob('/media/ksc/code/2022.06.16--test-superresolution/{}/finetune-samples/*'.format(args.dataset_name))
             data = glob('./{}/*'.format(args.dataset_name))
+            # data = glob('/media/ksc/data/X-Microscopy/X-Microscopy/UR-Net-8/dataset/training-example-data/*'.format(args.dataset_name))
             # data = glob('/media/ksc/code/tubulin-model-data/tubulin-model-3/finetune-samples/*')
             # np.random.shuffle(data)
             batch_idxs = min(len(data), args.train_size) // 1
@@ -123,13 +123,13 @@ def main(_):
                     num_ge = 10
                     new_n = random.randint(1, num_ge)
                     # image_path_val = image_path + '/dense/1-' + str(new_n) + '.tif'
-                    image_path_val = image_path + '/sparse/1-' + str(new_n) + '.tif'
+                    image_path_val = image_path + '/U-SRM/1-' + str(new_n) + '.tif'
                     img_B = imread(image_path_val)
 
                     for i in range(0, 2):
                         new_n = random.randint(1, num_ge)
                         # image_path_val = image_path + '/dense/1-' + str(new_n) + '.tif'
-                        image_path_val = image_path + '/sparse/1-' + str(new_n) + '.tif'
+                        image_path_val = image_path + '/U-SRM/1-' + str(new_n) + '.tif'
                         img_B1 = imread(image_path_val)
                         img_B[:, :, i + 1] = img_B1[:, :, 0]
 
